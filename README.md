@@ -9,17 +9,6 @@ Resources used:
 * [Svelte blogs to get typescript set up](https://svelte.dev/blog/svelte-and-typescript)
 
 Overall a very nice experience. Fast setup and none of React/Angular "learning curve".
-# BALL GAME
-
-First shot at HTML5 canvases, Svelte, and non-vanilla JS front-end development in general.
-
-Resources used:
-* [Svelte tutorial](https://svelte.dev/tutorial)
-* [Svelte-canvas](https://github.com/dnass/svelte-canvas)
-* [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) [for DOM](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetX) [stuff](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event)
-* [Svelte blogs to get typescript set up](https://svelte.dev/blog/svelte-and-typescript)
-
-Overall a very nice experience. Fast setup and none of React/Angular "learning curve".
 
 ## TODO
 
@@ -132,4 +121,3 @@ Then, from within your project folder:
 npm run build
 surge public my-project.surge.sh
 ```
-# ball-game-v1
