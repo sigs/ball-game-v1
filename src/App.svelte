@@ -5,13 +5,13 @@
 
 <main>
 	<h1>BALL GAME &nbsp; v.1</h1>
-	<div id="playarea" bind:clientWidth={width} bind:clientHeight={height}>
-		<PlayArea {width} {height}/>
-	</div>
 	<div id="loading">
 		<div style="height:100px"></div>
 		<img style="width:30%" src="res/loading.png" alt="loading...">
 		<h2 style="text-align:center">LOADING...</h2>
+	</div>
+	<div id="playarea" bind:clientWidth={width} bind:clientHeight={height}>
+		<PlayArea {width} {height}/>
 	</div>
 </main>
 
@@ -33,11 +33,11 @@
 	#playarea {
 		width: 100%;
 		height: 70%;
-		position: absolute;
 	}
 
 	#loading {
 		width: 100%;
+		position: absolute;
 	}
 
 	@media (min-width: 640px) {
