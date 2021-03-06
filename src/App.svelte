@@ -19,9 +19,7 @@
 	main {
 		text-align: center;
 		padding: 0;
-		max-width: 240px;
 		margin: 0 auto;
-		height: 100%;
 	}
 
 	h1 {
