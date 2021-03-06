@@ -3,6 +3,7 @@
 
     // import { spring } from "svelte/motion";
     import { Canvas, Layer, t } from "svelte-canvas"
+    let svelteCanvas
 
     // TODO: move to map properties
     const DAMP = 0.9
@@ -18,7 +19,10 @@
     terrainImages.src = "res/track_elements.gif"
     const objectImages = new Image()
     objectImages.src = "res/track_objects.png"
-    let mapImage
+    const background = {
+        dirty: true,
+        image: new Image(),
+    }
     enum Tile {
         GRASS, SAND, MUD, ICE,
         GRASS_U, GRASS_RU, GRASS_R, GRASS_RD,
@@ -63,15 +67,14 @@
         update() // TODO: update independent of render?
         //if ($t % 1000 < 30) console.log(mouse.x, mouse.y, $t)
 
-        if (!mapImage || mapImage.width !== width || mapImage.height !== height) {
-            console.log("redraw")
+        if (background.dirty) {
+            console.log("redraw dimensions:", width, height)
             if (terrainImages.width < 1) {
                 return
             }
             drawMap(context, width, height)
         }
-        context.putImageData(mapImage, 0, 0)
-        //console.log(mapImage.width, mapImage.height, width, height)
+        context.drawImage(background.image, 0, 0, width, height)
 
         const [ball_sx, ball_sy] = mapToScreen(ball.x, ball.y)
         const ball_sr = ball.r * tilesize
@@ -132,7 +135,8 @@
             }
         }
 
-        mapImage = context.getImageData(0, 0, canvasWidth, canvasHeight)
+        background.dirty = false
+        background.image.src = svelteCanvas.getCanvas().toDataURL()
     }
 
     function loadMap() {
@@ -276,6 +280,9 @@
 <audio bind:this={winSound} src="res/game_draw.wav"/>
 <Canvas
     {width} {height}
+    autoclear=false
+    bind:this={svelteCanvas}
+    on:resize={() => { background.dirty = true }}
     on:mouseleave={() => { mouse = { show: false, x: 0, y: 0, sx: 0, sy: 0 } }}
     on:mousemove={aim}
     on:click={shoot}
