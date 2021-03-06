@@ -20,6 +20,7 @@
 		text-align: center;
 		padding: 0;
 		margin: 0 auto;
+		height: 100%;
 	}
 
 	h1 {
